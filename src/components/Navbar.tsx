@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link to="/" onClick={closeMenu} className="flex items-center">
              <img 
-  src="Logo.jpeg" 
+  src="Logo.jpg" 
   alt="Me Dah Logo" 
   className="h-16 w-auto object-contain" 
 />
