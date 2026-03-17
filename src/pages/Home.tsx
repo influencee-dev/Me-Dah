@@ -23,17 +23,17 @@ type ReservationFormValues = z.infer<typeof reservationSchema>
 
 // Gallery Images (Picsum placeholders for 1.jpg to 11.jpg)
 const galleryImages = [
-  { src: "https://picsum.photos/seed/panzerotto1/800/600", title: "Panzerotti caldi", alt: "Panzerotto 1" },
-  { src: "https://picsum.photos/seed/focaccia1/800/600", title: "Focacce ripiene", alt: "Focaccia 1" },
-  { src: "https://picsum.photos/seed/sandwich1/800/600", title: "Sandwich gustosi", alt: "Sandwich 1" },
-  { src: "https://picsum.photos/seed/piatto1/800/600", title: "Primi piatti", alt: "Piatto 1" },
-  { src: "https://picsum.photos/seed/polpette1/800/600", title: "Polpette al sugo", alt: "Polpette 1" },
-  { src: "https://picsum.photos/seed/panzerotto2/800/600", title: "Panzerotto classico", alt: "Panzerotto 2" },
-  { src: "https://picsum.photos/seed/focaccia2/800/600", title: "Focaccia farcita", alt: "Focaccia 2" },
-  { src: "https://picsum.photos/seed/piatto2/800/600", title: "Secondi piatti", alt: "Piatto 2" },
-  { src: "https://picsum.photos/seed/streetfood1/800/600", title: "Street food", alt: "Street food 1" },
-  { src: "https://picsum.photos/seed/panzerotto3/800/600", title: "Panzerotto salume", alt: "Panzerotto 3" },
-  { src: "https://picsum.photos/seed/focaccia3/800/600", title: "Focaccia calda", alt: "Focaccia 3" },
+  { src: "1.jpg"},
+  { src: "2.jpg" },
+  { src: "3.jpg" },
+  { src: "4.jpg" },
+  { src: "5.jpg" },
+  { src: "6.jpg" },
+  { src: "7.jpg" },
+  { src: "8.jpg" },
+  { src: "9.jpg" },
+  { src: "10.jpg" },
+  { src: "11.jpg" },
 ]
 
 export function Home() {
