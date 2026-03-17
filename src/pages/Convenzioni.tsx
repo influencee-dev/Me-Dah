@@ -85,7 +85,7 @@ export function Convenzioni() {
     },
     {
       company: "Tech Startup Isola",
-      quote: "La convenzione con Me Dah ha risolto il problema della pausa pranzo.",
+      quote: "La convenzione con Meh Da ha risolto il problema della pausa pranzo.",
       author: "Office Manager",
     },
     {
