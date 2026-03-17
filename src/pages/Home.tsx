@@ -83,7 +83,7 @@ export function Home() {
             {/* Placeholder for Logo.jpg */}
             <div className="w-48 h-48 mx-auto mb-8 bg-white rounded-full flex items-center justify-center border-4 border-primary shadow-2xl overflow-hidden">
                <img 
-     src="Logo.jpeg" 
+     src="Logo.jpg" 
      alt="Me Dah Logo" 
      className="w-full h-full object-cover" 
    />
