@@ -82,7 +82,11 @@ export function Home() {
           >
             {/* Placeholder for Logo.jpg */}
             <div className="w-48 h-48 mx-auto mb-8 bg-white rounded-full flex items-center justify-center border-4 border-primary shadow-2xl overflow-hidden">
-               <span className="text-primary font-bold text-3xl tracking-wider uppercase">Me Dah</span>
+               <img 
+     src="Logo.jpeg" 
+     alt="Me Dah Logo" 
+     className="w-full h-full object-cover" 
+   />
             </div>
             
             <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
