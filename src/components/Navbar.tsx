@@ -16,10 +16,11 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" onClick={closeMenu} className="flex items-center">
-              {/* Using a placeholder for the logo since we don't have Logo.jpg */}
-              <div className="w-[200px] h-[80px] bg-white flex items-center justify-center border border-zinc-100 rounded shadow-sm">
-                <span className="text-primary font-bold text-xl tracking-wider uppercase">Me Dah</span>
-              </div>
+             <img 
+  src="Logo.jpeg" 
+  alt="Me Dah Logo" 
+  className="h-16 w-auto object-contain" 
+/>
             </Link>
           </div>
 
