@@ -101,14 +101,16 @@ export function Menu() {
         body: JSON.stringify({
           email: customerDetails.email,
           attributes: {
-            NOM: customerDetails.name.split(' ')[0],
-            PRENOM: customerDetails.name.split(' ')[1] || '',
+            FIRSTNAME: customerDetails.name,
             SMS: customerDetails.phone
           },
           listIds: [33]
         })
       })
-      if (!response.ok) throw new Error('Failed to save to Brevo')
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`Failed to save to Brevo: ${JSON.stringify(errorData)}`);
+      }
     } catch (error) {
       console.error('Brevo error:', error)
     }
