@@ -93,6 +93,7 @@ export function Menu() {
   const saveToBrevo = async () => {
     try {
       console.log('Brevo key exists:', !!(import.meta as any).env.VITE_BREVO_API_KEY);
+      console.log('Environment variables:', import.meta.env);
       const response = await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers: {
