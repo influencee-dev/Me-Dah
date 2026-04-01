@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand & Social */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-primary tracking-wider uppercase">Meh Da</h3>
+            <h3 className="text-2xl font-bold text-primary tracking-wider uppercase">Me Dah</h3>
             <p className="text-zinc-400 text-sm">
               Street Food Fresco a Isola. Panzerotti, focacce e menu pranzo veloci.
             </p>

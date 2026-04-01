@@ -1,64 +1,14 @@
 import { motion } from "motion/react"
 import { Button } from "../components/ui/button"
-import { Input } from "../components/ui/input"
-import { Textarea } from "../components/ui/textarea"
-import { Label } from "../components/ui/label"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
 import { useState } from "react"
-import { Building2, Percent, Clock, BadgeCheck, Truck, UtensilsCrossed, Send } from "lucide-react"
-
-const convenzioneSchema = z.object({
-  companyName: z.string().min(2, { message: "Il nome dell'azienda deve avere almeno 2 caratteri." }),
-  contactName: z.string().min(2, { message: "Inserisci il nome del referente." }),
-  email: z.string().email({ message: "Inserisci un'email valida." }),
-  phone: z.string().min(8, { message: "Inserisci un numero di telefono valido." }),
-  employees: z.string().min(1, { message: "Seleziona il numero di dipendenti." }),
-  notes: z.string().optional(),
-})
-
-type ConvenzioneFormValues = z.infer<typeof convenzioneSchema>
+import { Building2, Percent, Clock, BadgeCheck, Truck, UtensilsCrossed } from "lucide-react"
 
 export function Convenzioni() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ConvenzioneFormValues>({
-    resolver: zodResolver(convenzioneSchema),
-  })
-
-  const onSubmit = async (data: ConvenzioneFormValues) => {
-    setIsSubmitting(true)
-    // Simulate EmailJS submission
-    console.log("Form data:", data)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    reset()
-    setTimeout(() => setSubmitSuccess(false), 5000)
-  }
-
   const benefits = [
-    {
-      icon: <Percent className="h-8 w-8 text-primary" />,
-      title: "Sconti 10-20%",
-      description: "Sconti esclusivi sui menu pranzo e su tutto il listino per i tuoi dipendenti.",
-    },
     {
       icon: <Clock className="h-8 w-8 text-secondary" />,
       title: "Pranzo in 45 min",
       description: "Servizio prioritario per garantire una pausa pranzo veloce e senza stress.",
-    },
-    {
-      icon: <BadgeCheck className="h-8 w-8 text-primary" />,
-      title: "Badge Aziendale",
-      description: "Riconoscimento immediato tramite badge o app per accedere agli sconti.",
     },
     {
       icon: <UtensilsCrossed className="h-8 w-8 text-secondary" />,
@@ -85,7 +35,7 @@ export function Convenzioni() {
     },
     {
       company: "Tech Startup Isola",
-      quote: "La convenzione con Meh Da ha risolto il problema della pausa pranzo.",
+      quote: "La convenzione con Me Dah ha risolto il problema della pausa pranzo.",
       author: "Office Manager",
     },
     {
@@ -155,6 +105,36 @@ export function Convenzioni() {
         </div>
       </section>
 
+      {/* Menu Pranzo Section */}
+      <section className="py-24 bg-zinc-50 border-y border-zinc-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">Menu Pranzo</h2>
+            <p className="text-zinc-600">Le nostre proposte per la tua pausa pranzo.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold text-zinc-900 mb-6">Menù Combo Panzerotti</h3>
+              <div className="space-y-4">
+                {/* Panzerotti combo items */}
+                <div className="flex justify-between border-b border-zinc-200 pb-2"><span>Panzerotto Pomodoro e Mozzarella</span><span className="font-bold">€5.50</span></div>
+                <div className="flex justify-between border-b border-zinc-200 pb-2"><span>Panzerotto Pomodoro, Mozzarella e Prosciutto</span><span className="font-bold">€6.50</span></div>
+                <div className="flex justify-between border-b border-zinc-200 pb-2"><span>Panzerotto Pomodoro, Mozzarella e Salame</span><span className="font-bold">€6.50</span></div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-zinc-900 mb-6">Panzerotti</h3>
+              <div className="space-y-4">
+                {/* Panzerotti items */}
+                <div className="flex justify-between border-b border-zinc-200 pb-2"><span>Panzerotto Pomodoro e Mozzarella</span><span className="font-bold">€4.50</span></div>
+                <div className="flex justify-between border-b border-zinc-200 pb-2"><span>Panzerotto Pomodoro, Mozzarella e Prosciutto</span><span className="font-bold">€5.50</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-24 bg-zinc-50 border-y border-zinc-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,107 +178,15 @@ export function Convenzioni() {
           </div>
 
           <div className="bg-zinc-50 p-8 md:p-10 rounded-3xl border border-zinc-200 shadow-xl">
-            {submitSuccess ? (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center py-12"
-              >
-                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Send className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-2">Richiesta Inviata!</h3>
-                <p className="text-zinc-600">Il nostro team ti contatterà a breve con una proposta su misura.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-zinc-700">Nome Azienda</Label>
-                    <Input
-                      id="companyName"
-                      placeholder="Es. Tech Corp Srl"
-                      className="bg-white border-zinc-300 text-zinc-900 focus-visible:ring-primary"
-                      {...register("companyName")}
-                    />
-                    {errors.companyName && <p className="text-primary text-sm">{errors.companyName.message}</p>}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="contactName" className="text-zinc-700">Referente HR / Office Manager</Label>
-                    <Input
-                      id="contactName"
-                      placeholder="Mario Rossi"
-                      className="bg-white border-zinc-300 text-zinc-900 focus-visible:ring-primary"
-                      {...register("contactName")}
-                    />
-                    {errors.contactName && <p className="text-primary text-sm">{errors.contactName.message}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-zinc-700">Email Aziendale</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="mario.rossi@azienda.it"
-                      className="bg-white border-zinc-300 text-zinc-900 focus-visible:ring-primary"
-                      {...register("email")}
-                    />
-                    {errors.email && <p className="text-primary text-sm">{errors.email.message}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-zinc-700">Telefono</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+39 333 1234567"
-                      className="bg-white border-zinc-300 text-zinc-900 focus-visible:ring-primary"
-                      {...register("phone")}
-                    />
-                    {errors.phone && <p className="text-primary text-sm">{errors.phone.message}</p>}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="employees" className="text-zinc-700">Numero Dipendenti in Sede</Label>
-                  <select
-                    id="employees"
-                    className="flex h-10 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                    {...register("employees")}
-                  >
-                    <option value="">Seleziona...</option>
-                    <option value="1-10">1 - 10</option>
-                    <option value="11-50">11 - 50</option>
-                    <option value="51-100">51 - 100</option>
-                    <option value="100+">Più di 100</option>
-                  </select>
-                  {errors.employees && <p className="text-primary text-sm">{errors.employees.message}</p>}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="notes" className="text-zinc-700">Esigenze Particolari (Opzionale)</Label>
-                  <Textarea
-                    id="notes"
-                    placeholder="Es. Richiesta delivery, menu vegetariani, budget fisso..."
-                    className="bg-white border-zinc-300 text-zinc-900 focus-visible:ring-primary min-h-[100px]"
-                    {...register("notes")}
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full py-6 text-lg rounded-xl font-bold bg-secondary hover:bg-secondary/90 text-white shadow-md"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Invio in corso..." : "Richiedi Convenzione"}
-                </Button>
-                
-                <p className="text-center text-zinc-500 text-xs mt-4">
-                  I tuoi dati saranno trattati nel rispetto della privacy policy.
-                </p>
-              </form>
-            )}
+            <iframe 
+              width="540" 
+              height="800" 
+              src="https://996d0fa4.sibforms.com/serve/MUIFABGEAsa9cDcz_AXj3RhaXDFrikFRZXozhrCWsx91jYnRDDon-QhuJ7EEVVPctjQdKv3UzLTUUKBWLLs__6iWm3WaMuVE-AIR_rJCqorDy0YBzeaSWrVNmQvygMe0NIviIAKds3i71iJkM6Qm0g7Ox-waK19bgDgdKGvmlc3uTpQD3uzmztj3-Li3LklpAO0IpI-sH96ewdlB" 
+              frameBorder="0" 
+              scrolling="no" 
+              allowFullScreen 
+              style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
+            ></iframe>
           </div>
         </div>
       </section>
