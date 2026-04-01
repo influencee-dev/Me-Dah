@@ -92,31 +92,51 @@ export function Menu() {
 
   const saveToBrevo = async () => {
     try {
-      console.log('Brevo key exists:', !!(import.meta as any).env.VITE_BREVO_API_KEY);
-      console.log('Environment variables:', import.meta.env);
+      const contactData = {
+        email: customerDetails.email,
+        attributes: {
+          FIRSTNAME: customerDetails.name,
+          SMS: customerDetails.phone
+        },
+        listIds: [33]
+      };
+
       const response = await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'api-key': (import.meta as any).env.VITE_BREVO_API_KEY || ''
         },
-        body: JSON.stringify({
-          email: customerDetails.email,
-          attributes: {
-            FIRSTNAME: customerDetails.name,
-            SMS: customerDetails.phone
+        body: JSON.stringify(contactData)
+      });
+
+      // Se il contatto esiste già (400), proviamo ad aggiornarlo con PUT
+      if (response.status === 400) {
+        const updateResponse = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(customerDetails.email)}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': (import.meta as any).env.VITE_BREVO_API_KEY || ''
           },
-          listIds: [33]
-        })
-      })
-      if (!response.ok) {
+          body: JSON.stringify({
+            attributes: {
+              FIRSTNAME: customerDetails.name,
+              SMS: customerDetails.phone
+            }
+          })
+        });
+        if (!updateResponse.ok) {
+          const errorData = await updateResponse.json();
+          throw new Error(`Failed to update Brevo contact: ${JSON.stringify(errorData)}`);
+        }
+      } else if (!response.ok) {
         const errorData = await response.json();
         throw new Error(`Failed to save to Brevo: ${JSON.stringify(errorData)}`);
       }
     } catch (error) {
-      console.error('Brevo error:', error)
+      console.error('Brevo error:', error);
     }
-  }
+  };
 
   const sendWhatsAppOrder = () => {
     if (!customerDetails.name || !customerDetails.phone) {
