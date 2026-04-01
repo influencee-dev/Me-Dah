@@ -19,7 +19,7 @@ export function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/rosticceria-hero/1920/1080"
+            src="/hero.jpg"
             alt="Me Dah Rosticceria"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
