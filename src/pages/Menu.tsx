@@ -92,14 +92,20 @@ export function Menu() {
 
   const saveToBrevo = async () => {
     try {
+      // Formatta il numero di telefono per Brevo (es. +39...)
+      let formattedPhone = customerDetails.phone.replace(/\s+/g, '');
+      if (!formattedPhone.startsWith('+')) {
+        formattedPhone = '+39' + formattedPhone;
+      }
+
       const contactData = {
         email: customerDetails.email,
         attributes: {
           FIRSTNAME: customerDetails.name,
-          SMS: customerDetails.phone
+          SMS: formattedPhone
         },
         listIds: [33],
-        updateEnabled: true // Questo aggiorna il contatto se esiste già
+        updateEnabled: true
       };
 
       const response = await fetch('https://api.brevo.com/v3/contacts', {
