@@ -4,12 +4,12 @@ import { Utensils, Building2, CreditCard, MapPin, Phone, Instagram } from "lucid
 import { Link } from "react-router-dom"
 
 const galleryImages = [
-  { src: "https://picsum.photos/seed/panzerotto1/800/600", title: "Panzerotti caldi", alt: "Panzerotto 1" },
-  { src: "https://picsum.photos/seed/focaccia1/800/600", title: "Focacce ripiene", alt: "Focaccia 1" },
-  { src: "https://picsum.photos/seed/sandwich1/800/600", title: "Sandwich gustosi", alt: "Sandwich 1" },
-  { src: "https://picsum.photos/seed/piatto1/800/600", title: "Primi piatti", alt: "Piatto 1" },
-  { src: "https://picsum.photos/seed/polpette1/800/600", title: "Polpette al sugo", alt: "Polpette 1" },
-  { src: "https://picsum.photos/seed/panzerotto2/800/600", title: "Panzerotto classico", alt: "Panzerotto 2" },
+  { src: "1.webp" },
+  { src: "2.webp" },
+  { src: "3.webp" },
+  { src: "4.webp" },
+  { src: "5.webp" },
+  { src: "6.webp" },
 ]
 
 export function Home() {
