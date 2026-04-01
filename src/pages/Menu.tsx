@@ -141,7 +141,7 @@ Totale: €${total.toFixed(2)}
 Telefono: ${customerDetails.phone}
 Email: ${customerDetails.email}`
 
-    const whatsappUrl = `https://wa.me/393347751122?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/393883460668?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
