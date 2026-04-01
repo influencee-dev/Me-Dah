@@ -98,7 +98,8 @@ export function Menu() {
           FIRSTNAME: customerDetails.name,
           SMS: customerDetails.phone
         },
-        listIds: [33]
+        listIds: [33],
+        updateEnabled: true // Questo aggiorna il contatto se esiste già
       };
 
       const response = await fetch('https://api.brevo.com/v3/contacts', {
@@ -110,29 +111,11 @@ export function Menu() {
         body: JSON.stringify(contactData)
       });
 
-      // Se il contatto esiste già (400), proviamo ad aggiornarlo con PUT
-      if (response.status === 400) {
-        const updateResponse = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(customerDetails.email)}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': (import.meta as any).env.VITE_BREVO_API_KEY || ''
-          },
-          body: JSON.stringify({
-            attributes: {
-              FIRSTNAME: customerDetails.name,
-              SMS: customerDetails.phone
-            }
-          })
-        });
-        if (!updateResponse.ok) {
-          const errorData = await updateResponse.json();
-          throw new Error(`Failed to update Brevo contact: ${JSON.stringify(errorData)}`);
-        }
-      } else if (!response.ok) {
+      if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(`Failed to save to Brevo: ${JSON.stringify(errorData)}`);
+        throw new Error(`Failed to save/update Brevo contact: ${JSON.stringify(errorData)}`);
       }
+      console.log('Contact saved/updated in Brevo successfully');
     } catch (error) {
       console.error('Brevo error:', error);
     }
