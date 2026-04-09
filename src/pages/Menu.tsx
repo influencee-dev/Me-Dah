@@ -6,77 +6,65 @@ import { useCart } from "../context/CartContext"
 
 const menuData = [
   {
-    category: "Menù Combo Panzerotti",
-    description: "con una bibita o birra a scelta",
-    items: [
-      { id: 1, name: "Panzerotto con Pomodoro e Mozzarella", price: 5.50 },
-      { id: 2, name: "Panzerotto con Pomodoro, Mozzarella e Prosciutto Cotto", price: 6.50 },
-      { id: 3, name: "Panzerotto con Pomodoro, Mozzarella e Salame", price: 6.50 },
-      { id: 4, name: "Panzerotto con Pomodoro, Mozzarella e Spianata Piccante", price: 6.50 },
-      { id: 5, name: "Panzerotto con Prosciutto Cotto, Mozzarella e Funghi", price: 7.00 },
-      { id: 6, name: "Panzerotto con Parmigiana di Melanzane e Mozzarella", price: 7.00 },
-      { id: 7, name: "Panzerotto con Scamorza Affumicata, Spianata Piccante e Gorgonzola", price: 7.00 },
-      { id: 8, name: "Panzerotto con Mozzarella, Mortadella e Crema di Pistacchio", price: 7.00 },
-      { id: 9, name: "Panzerotto Rustico con Pomodoro, Mozzarella e Prosciutto Cotto", price: 7.00 },
-    ]
-  },
-  {
     category: "Panzerotti",
     items: [
-      { id: 10, name: "Panzerotto con Pomodoro e Mozzarella", price: 4.50 },
-      { id: 11, name: "Panzerotto con Pomodoro, Mozzarella e Prosciutto Cotto", price: 5.50 },
-      { id: 12, name: "Panzerotto con Pomodoro, Mozzarella e Salame", price: 5.50 },
-      { id: 13, name: "Panzerotto con Pomodoro, Mozzarella e Spianata Piccante", price: 5.50 },
-      { id: 14, name: "Panzerotto con Prosciutto Cotto, Mozzarella e Funghi", price: 6.00 },
-      { id: 15, name: "Panzerotto con Scamorza Affumicata, Spianata Piccante e Gorgonzola", price: 6.50 },
-      { id: 16, name: "Panzerotto Rustico con Pomodoro, Mozzarella e Prosciutto Cotto", price: 6.50 },
+      { id: 1, name: "Panzerotto Classico", price: 4.50 },
+      { id: 2, name: "Panzerotto Salumi", price: 5.50 },
+      { id: 3, name: "Panzerotto Speciali", price: 7.00 },
     ]
   },
   {
     category: "Focacce",
     items: [
-      { id: 17, name: "Focaccia con Pomodorini e Origano", price: 3.00 },
+      { id: 4, name: "Focaccia al Pomodoro", price: 3.50 },
+      { id: 5, name: "Focaccia alla Cipolla", price: 3.50 },
     ]
   },
   {
     category: "Specialità",
     items: [
-      { id: 18, name: "Polpetta al Sugo con Macinato e Ricotta", price: 2.50 },
+      { id: 6, name: "Polpetta al Sugo con Macinato e Ricotta", price: 2.50 },
+      { id: 7, name: "Primo del Giorno", price: 6.50 },
+      { id: 8, name: "Secondo del Giorno", price: 9.00 },
+      { id: 9, name: "Contorni", price: 5.00 },
+      { id: 10, name: "Rustico Cotto e Besciamella", price: 6.50 },
     ]
   },
   {
     category: "Fritti",
     items: [
-      { id: 19, name: "Crocchetta di Patate con Mortadella", price: 3.00 },
-      { id: 20, name: "Würstel in Carrozza", price: 4.00 },
+      { id: 11, name: "Crocchetta di Patate", price: 2.50 },
+      { id: 12, name: "Würstel in Carrozza", price: 3.50 },
+      { id: 13, name: "Cotoletta di Pollo", price: 2.50 },
     ]
   },
   {
     category: "Extra",
     items: [
-      { id: 21, name: "Ketchup in Bustina", price: 0.30 },
-      { id: 22, name: "Maionese in Bustina", price: 0.30 },
+      { id: 14, name: "Pizza al Trancio", price: 4.50 },
+      { id: 15, name: "Paposce", price: 9.00 },
     ]
   },
   {
     category: "Bevande",
     items: [
-      { id: 23, name: "Acqua Naturale 50cl", price: 2.00 },
-      { id: 24, name: "Acqua Frizzante 50cl", price: 2.00 },
-      { id: 25, name: "Coca-Cola Sleek 33cl", price: 3.00 },
-      { id: 26, name: "Coca-Cola Zero Can 33 cl", price: 3.00 },
-      { id: 27, name: "Fanta Original Sleek 33 cl", price: 3.00 },
-      { id: 28, name: "Sprite Sleek Can 330 ml", price: 3.00 },
-      { id: 29, name: "Lemonsoda in Lattina 33cl", price: 3.00 },
-      { id: 30, name: "Estathé al Limone in Lattina 33cl", price: 3.00 },
-      { id: 31, name: "Estathé alla Pesca in Lattina 33cl", price: 3.00 },
+      { id: 16, name: "Acqua Naturale 50cl", price: 1.50 },
+      { id: 17, name: "Acqua Frizzante 50cl", price: 1.50 },
+      { id: 18, name: "Coca-Cola Sleek 33cl", price: 2.50 },
+      { id: 19, name: "Coca-Cola Zero Can 33 cl", price: 2.50 },
+      { id: 20, name: "Fanta Original Sleek 33 cl", price: 2.50 },
+      { id: 21, name: "Sprite Sleek Can 330 ml", price: 2.50 },
+      { id: 22, name: "Lemonsoda in Lattina 33cl", price: 2.50 },
+      { id: 23, name: "Estathé al Limone in Lattina 33cl", price: 2.50 },
+      { id: 24, name: "Estathé alla Pesca in Lattina 33cl", price: 2.50 },
     ]
   },
   {
-    category: "Birre",
+    category: "Alcolici",
     items: [
-      { id: 32, name: "Peroni 33cl", price: 3.00 },
-      { id: 33, name: "Ichnusa non Filtrata", price: 4.00 },
+      { id: 25, name: "Peroni 33cl", price: 3.00 },
+      { id: 26, name: "Ichnusa non Filtrata", price: 3.50 },
+       { id: 27, name: "Cocktail", price: 6.00 },
     ]
   }
 ]
