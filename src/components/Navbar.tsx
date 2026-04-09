@@ -20,7 +20,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link to="/" onClick={closeMenu} className="flex items-center">
               <img 
-                src="/logo.jpg" 
+                src="/logo2.png" 
                 alt="Me Dah Rosticceria Logo" 
                 className="h-16 w-auto object-contain"
                 onError={(e) => {
